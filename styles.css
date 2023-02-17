@@ -22,15 +22,16 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(16, 1fr); /* default to 16x16 grid */
+  grid-template-rows: repeat(16, 1fr); /* default to 16x16 grid */
+  width: 800px;
+  background-color: white;
 }
 
 .square {
-  height: 40px;
-  width: 40px;
-  background-color: aquamarine;
+  aspect-ratio: 1 / 1;
+  background-color: blueviolet;
+  outline: 1px solid purple;
 }
 
 /* || SLIDER */

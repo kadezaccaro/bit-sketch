@@ -1,47 +1,48 @@
-// * create grid using divs
-// * when user hovers over squares, change the background color
-// * when user slides, display grid size in the following format: XX x XX
-// TODO: when user slides, change grid size based on that slide position value
-// only draw when the user is holding mouse down
-
 const grid = document.querySelector(".grid-container");
 const slider = document.querySelector(".slider");
-const gridSize = document.querySelector(".grid-size");
+const ratio = document.querySelector(".grid-ratio");
 
-let isDrawing = false;
+let squares;
+let size = slider.value;
 
-window.addEventListener("load", createGrid());
+// ------ EVENT LISTENERS ------
 
-function createGrid() {
-  for (let i = 0; i < 256; i++) {
+window.addEventListener("load", makeGrid(size));
+slider.addEventListener("input", updateGrid);
+
+// ------ FUNCTIONS ------
+
+function makeGrid(size) {
+  const totalPixels = Math.pow(size, 2);
+  for (let i = 0; i < totalPixels; i++) {
     const div = document.createElement("div");
     div.classList.add("square");
     div.setAttribute("data-number", `sq-${i}`);
     grid.appendChild(div);
   }
+  squares = document.querySelectorAll(".square");
   draw();
 }
 
-// window.addEventListener("mousedown", () => {
-//   isDrawing = true;
-//   console.log(isDrawing);
-// });
-// window.addEventListener("mouseup", () => {
-//   isDrawing = false;
-//   console.log(isDrawing);
-// });
+function updateGrid() {
+  size = slider.value;
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+  ratio.textContent = `${size} x ${size}`;
+  deleteGrid();
+  makeGrid(size);
+}
 
-function draw() {
-  const squares = document.querySelectorAll(".square");
-  //   if (!isDrawing) return;
+function deleteGrid() {
   squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "red";
-    });
+    square.remove();
   });
 }
 
-// update value on slide - default: 16 x 16
-slider.addEventListener("input", () => {
-  gridSize.textContent = `${slider.value} x ${slider.value}`;
-});
+function draw() {
+  squares.forEach((square) => {
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = "black";
+    });
+  });
+}
