@@ -4,10 +4,17 @@ const ratio = document.querySelector(".grid-ratio");
 
 let squares;
 let size = slider.value;
+let isDrawing = false;
 
 // ------ EVENT LISTENERS ------
 
 window.addEventListener("load", makeGrid(size));
+window.addEventListener("mousedown", () => {
+  isDrawing = true;
+});
+window.addEventListener("mouseup", () => {
+  isDrawing = false;
+});
 slider.addEventListener("input", updateGrid);
 
 // ------ FUNCTIONS ------
@@ -15,13 +22,14 @@ slider.addEventListener("input", updateGrid);
 function makeGrid(size) {
   const totalPixels = Math.pow(size, 2);
   for (let i = 0; i < totalPixels; i++) {
-    const div = document.createElement("div");
-    div.classList.add("square");
-    div.setAttribute("data-number", `sq-${i}`);
-    grid.appendChild(div);
+    const square = document.createElement("div");
+    square.classList.add("square");
+    square.setAttribute("data-number", `sq-${i}`);
+    square.addEventListener("mouseover", draw);
+    square.addEventListener("mousedown", draw);
+    grid.appendChild(square);
   }
   squares = document.querySelectorAll(".square");
-  draw();
 }
 
 function updateGrid() {
@@ -39,10 +47,9 @@ function deleteGrid() {
   });
 }
 
-function draw() {
-  squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "black";
-    });
-  });
+function draw(event) {
+  // prevent user from dragging elements
+  event.preventDefault();
+  if (event.type === "mouseover" && !isDrawing) return;
+  event.target.style.backgroundColor = "blue";
 }
