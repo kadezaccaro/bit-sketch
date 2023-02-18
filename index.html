@@ -9,14 +9,14 @@
   </head>
   <body>
     <main>
-      <h1>Etch A Sketch</h1>
+      <!-- <h1>Etch A Sketch</h1> -->
       <div class="grid-container"></div>
 
       <div class="settings">
-        <div class="slider-container">
-          <label for="slider"
-            >Grid size: <span class="grid-ratio">16 x 16</span></label
-          >
+        <h2>Settings</h2>
+
+        <label for="slider">
+          Grid size: <span class="grid-ratio">16 x 16</span>
           <input
             type="range"
             class="slider"
@@ -25,7 +25,12 @@
             max="64"
             value="16"
           />
-        </div>
+        </label>
+
+        <label for="grid-line-toggle">
+          Hide grid lines
+          <input type="checkbox" id="grid-line-toggle" />
+        </label>
       </div>
     </main>
 

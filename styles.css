@@ -10,12 +10,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: black;
   color: white;
+  overflow: hidden;
 }
 
 main {
   display: grid;
   place-content: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /* || GRID */
@@ -24,20 +25,37 @@ main {
   display: grid;
   grid-template-columns: repeat(16, 1fr); /* default to 16x16 grid */
   grid-template-rows: repeat(16, 1fr); /* default to 16x16 grid */
-  width: 800px;
-  background-color: white;
+  margin: 80px;
+  width: calc(100vh - 160px);
 }
 
 .square {
   aspect-ratio: 1 / 1;
   background-color: blueviolet;
-  outline: 1px solid purple;
+  outline: 1px solid black;
+  background-clip: content-box;
 }
 
-/* || SLIDER */
+.hide-grid-lines {
+  outline: 1px solid blueviolet;
+}
 
-.slider-container {
-  width: 100%;
+/* || SETTINGS */
+
+.settings {
+  background: linear-gradient(blueviolet, black);
+  color: black;
+  padding: 24px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 50%;
+}
+
+label {
+  display: block;
 }
 
 .slider {
