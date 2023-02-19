@@ -54,7 +54,7 @@ function draw(event) {
   // prevent user from dragging elements
   event.preventDefault();
   if (event.type === "mouseover" && !isDrawing) return;
-  event.target.style.backgroundColor = "blue";
+  event.target.classList.add("colorize");
 }
 
 function hideGridLines() {

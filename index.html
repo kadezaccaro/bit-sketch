@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch A Sketch</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <main>
-      <!-- <h1>Etch A Sketch</h1> -->
-      <div class="grid-container"></div>
-
       <div class="settings">
-        <h2>Settings</h2>
+        <h1>Etch A Sketch</h1>
 
-        <label for="slider">
-          Grid size: <span class="grid-ratio">16 x 16</span>
+        <label for="slider" class="slider-container">
+          grid size:
           <input
             type="range"
             class="slider"
@@ -25,13 +29,25 @@
             max="64"
             value="16"
           />
+          <span class="grid-ratio">16 x 16</span>
         </label>
 
-        <label for="grid-line-toggle">
-          Hide grid lines
+        <span class="spacer"></span>
+
+        <label for="grid-line-toggle" class="toggle-container">
+          hide grid lines
           <input type="checkbox" id="grid-line-toggle" />
         </label>
+
+        <span class="spacer"></span>
+
+        <label for="rgb-toggle" class="toggle-container">
+          RGB mode
+          <input type="checkbox" id="rgb-toggle" />
+        </label>
       </div>
+
+      <div class="grid-container"></div>
     </main>
 
     <script src="app.js"></script>
