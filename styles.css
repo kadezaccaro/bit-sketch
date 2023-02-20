@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   background-color: var(--dark);
   color: var(--light);
 }
@@ -55,16 +55,22 @@ main {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 24px;
+  margin-bottom: 8px;
 }
 
 h1 {
-  font-family: "Kaushan Script", cursive;
+  font-family: "Grand Hotel", cursive;
   flex: 1;
   color: var(--accent);
-  font-size: 32px;
-  line-height: 32px;
+  font-size: 48px;
+  line-height: 48px;
+  transition: 0.3s;
+}
+
+h1:hover {
+  color: var(--light);
+  cursor: pointer;
 }
 
 label {
@@ -81,13 +87,18 @@ label {
 
 /* || SLIDER */
 
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  height: 8px;
+  height: 4px;
   background: var(--mid);
   outline: none;
-  border-radius: 8px;
+  border-radius: 4px;
   margin: 0 6px;
 }
 
@@ -109,7 +120,7 @@ label {
 }
 
 .grid-ratio {
-  background-color: var(--mid);
+  border: 2px solid var(--mid);
   padding: 4px 8px;
   border-radius: 4px;
   text-transform: lowercase;
