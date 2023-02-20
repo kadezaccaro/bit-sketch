@@ -2,6 +2,7 @@ const grid = document.querySelector(".grid-container");
 const slider = document.querySelector(".slider");
 const ratio = document.querySelector(".grid-ratio");
 const gridLineToggle = document.querySelector("#grid-line-toggle");
+const rgbToggle = document.querySelector("#rgb-toggle");
 
 let squares;
 let size = slider.value;
@@ -18,6 +19,7 @@ window.addEventListener("mouseup", () => {
 });
 slider.addEventListener("input", updateGrid);
 gridLineToggle.addEventListener("change", hideGridLines);
+rgbToggle.addEventListener("change", getRandomRGBVals);
 
 // ------ FUNCTIONS ------
 
@@ -54,7 +56,11 @@ function draw(event) {
   // prevent user from dragging elements
   event.preventDefault();
   if (event.type === "mouseover" && !isDrawing) return;
-  event.target.classList.add("colorize");
+  if (rgbToggle.checked) {
+    event.target.style.backgroundColor = `rgb(${getRandomRGBVals()})`;
+  } else {
+    event.target.classList.add("colorize");
+  }
 }
 
 function hideGridLines() {
@@ -65,4 +71,13 @@ function hideGridLines() {
 
 function resetGridLines() {
   gridLineToggle.checked = false;
+}
+
+function getRandomRGBVals() {
+  const rgb = [];
+  for (let i = 0; i < 3; i++) {
+    const randomNum = Math.floor(Math.random() * 255 + 1);
+    rgb.push(randomNum);
+  }
+  return rgb.toString();
 }

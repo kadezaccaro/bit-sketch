@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: monospace;
+  font-family: "Roboto", sans-serif;
   background-color: var(--dark);
   color: var(--light);
 }
@@ -31,7 +31,7 @@ main {
   display: grid;
   grid-template-columns: repeat(16, 1fr); /* default to 16x16 grid */
   grid-template-rows: repeat(16, 1fr); /* default to 16x16 grid */
-  width: 80vh;
+  width: 1000px;
 }
 
 .square {
@@ -54,7 +54,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-bottom: 16px;
 }
 
@@ -75,6 +76,7 @@ label {
 .spacer::before {
   content: "\2022";
   color: var(--mid);
+  font-size: 24px;
 }
 
 /* || SLIDER */
@@ -86,7 +88,7 @@ label {
   background: var(--mid);
   outline: none;
   border-radius: 8px;
-  margin: 0 8px;
+  margin: 0 6px;
 }
 
 .slider::-webkit-slider-thumb {
@@ -108,8 +110,9 @@ label {
 
 .grid-ratio {
   background-color: var(--mid);
-  padding: 0px 4px;
+  padding: 4px 8px;
   border-radius: 4px;
+  text-transform: lowercase;
 }
 
 /* || TOGGLE SWITCH */
@@ -121,7 +124,7 @@ label {
 }
 
 input[type="checkbox"] {
-  margin-right: 8px;
+  margin-right: 6px;
   cursor: pointer;
   accent-color: var(--accent);
 }
