@@ -34,18 +34,14 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(16, 1fr); /* default to 16x16 grid */
-  grid-template-rows: repeat(16, 1fr); /* default to 16x16 grid */
+  grid-template-columns: repeat(16, 1fr); /* Default to 16x16 grid */
+  grid-template-rows: repeat(16, 1fr); /* Default to 16x16 grid */
 }
 
 .square {
   aspect-ratio: 1 / 1;
   background-color: var(--light);
   outline: 1px solid black;
-}
-
-.colorize {
-  background-color: var(--accent);
 }
 
 .hide-grid-lines {
@@ -96,7 +92,7 @@ label {
   background: var(--mid);
   outline: none;
   border-radius: 4px;
-  margin-left: 6px;
+  margin-left: 4px;
 }
 
 .slider::-webkit-slider-thumb {
@@ -123,23 +119,31 @@ label {
   text-transform: lowercase;
 }
 
-/* || TOGGLE SWITCH */
+/* || RADIO & TOGGLE */
 
-.toggle-container {
+.toggle-container,
+.radio-container {
   display: flex;
   flex-direction: row-reverse;
   cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
 }
 
-input[type="checkbox"] {
-  margin-right: 6px;
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 4px;
   cursor: pointer;
   accent-color: var(--accent);
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
 }
 
 /* || RESPONSIVE */
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 840px) {
   main {
     height: 100%;
     gap: 16px;
